@@ -1,6 +1,7 @@
 package widyanto.fauzan.learnfragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.viewPager)
     ViewPager viewPager;
+    @BindView(R.id.tabLayout)
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,16 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new FragmentKiri());
         fragments.add(new FragmentKanan());
 
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
+        List<String> tabTitle = new ArrayList<>();
+
+        tabTitle.add("Beranda");
+        tabTitle.add("Informasi");
+        tabTitle.add("Download");
+        tabTitle.add("Tentang");
+
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments, tabTitle));
+
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 }
