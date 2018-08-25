@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnFragment1Clicked() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout, new FragmentKanan());
+        fragmentTransaction.replace(R.id.frameLayout, new FragmentKanan());
         fragmentTransaction.commit();
     }
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnFragment2Clicked() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout, new FragmentKiri());
+        fragmentTransaction.replace(R.id.frameLayout, new FragmentKiri());
         fragmentTransaction.commit();
     }
 }
