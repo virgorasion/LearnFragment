@@ -6,10 +6,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/fragment_kanan"
         android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Ini Fragment Kanan" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Fragment Kanan" />
 
 </RelativeLayout>

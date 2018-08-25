@@ -1,24 +1,21 @@
 package widyanto.fauzan.learnfragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.FrameLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.frameLayout)
-    FrameLayout frameLayout;
-    @BindView(R.id.btnFragment1)
-    Button btnFragment1;
-    @BindView(R.id.btnFragment2)
-    Button btnFragment2;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +23,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-    }
+        List<Fragment> fragments = new ArrayList<>();
 
+        fragments.add(new FragmentKiri());
+        fragments.add(new FragmentKanan());
+        fragments.add(new FragmentKiri());
+        fragments.add(new FragmentKanan());
 
-    @OnClick(R.id.btnFragment1)
-    public void onBtnFragment1Clicked() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout, new FragmentKanan());
-        fragmentTransaction.commit();
-    }
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
 
-    @OnClick(R.id.btnFragment2)
-    public void onBtnFragment2Clicked() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout, new FragmentKiri());
-        fragmentTransaction.commit();
     }
 }
